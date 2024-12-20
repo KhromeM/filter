@@ -30,7 +30,7 @@ chrome.storage.sync.get(
 
 		api = new OpenRouterAPI(openrouterKey);
 		observeAndProcessElements();
-		monitorURLChanges();
+		// monitorURLChanges(); // causes some bugs im too lazy to fix rn
 	}
 );
 

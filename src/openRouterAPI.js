@@ -33,7 +33,12 @@ export default class OpenRouterAPI {
 		const prompt = `You are analyzing a YouTube video for a user who wants to ${userGoals}.
 The video title is "${videoTitle}" and the channel name is "${channelName}".
 Estimate the probability (0-100%) that this video will help the user achieve their goals and not waste their time.
-Provide a "probability" as a number.`;
+Provide a "probability" as a number.
+
+EXAMPLE RESPONSE:
+{
+    "probability": 85
+}`;
 
 		try {
 			const completion = await this.openai.chat.completions.create({
@@ -44,9 +49,6 @@ Provide a "probability" as a number.`;
 						content: prompt,
 					},
 				],
-				// Using the schema from the snippet. If unsupported, fallback to manual parsing.
-				// If schema validation is not directly supported by this environment,
-				// we'll rely on the returned message and manually validate.
 				temperature: 1,
 				max_tokens: 20,
 				response_format: responseSchema,
@@ -54,7 +56,7 @@ Provide a "probability" as a number.`;
 
 			const messageContent = completion.choices[0].message.content;
 			const cleanedResponse = this.cleanJsonResponse(messageContent);
-			// console.log(videoTitle, channelName, cleanedResponse);
+			console.log(videoTitle, channelName, messageContent);
 			const response = JSON.parse(cleanedResponse);
 			const validatedResponse = responseSchema.parse(response);
 			return validatedResponse;
