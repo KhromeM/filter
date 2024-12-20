@@ -1,0 +1,21 @@
+{
+	"manifest_version": 3,
+	"name": "Youtube Clean",
+	"version": "1.0",
+	"description": "Filters YouTube videos based on user's long-term goals.",
+	"permissions": ["activeTab", "storage"],
+	"host_permissions": ["https://www.youtube.com/*", "https://youtube.com/*"],
+	"background": {
+		"service_worker": "dist/background.bundle.js"
+	},
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://www.youtube.com/*", "https://youtube.com/*"],
+			"js": ["dist/contentScript.bundle.js"],
+			"run_at": "document_idle"
+		}
+	]
+}

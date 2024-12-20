@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Set Your Goals & Key</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				min-width: 200px;
+				padding: 10px;
+			}
+			label,
+			input,
+			button,
+			div {
+				display: block;
+				margin-bottom: 10px;
+			}
+			input[type="text"] {
+				width: 100%;
+			}
+			.slider-container {
+				margin-bottom: 20px;
+			}
+			.slider-value {
+				display: inline-block;
+				width: 30px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Set Your OpenRouter Key & Motivation</h2>
+		<label for="openrouter-key">OpenRouter Key:</label>
+		<input
+			type="text"
+			id="openrouter-key"
+			placeholder="Enter your OpenRouter API key"
+		/>
+
+		<label for="goals">Your Motivation/Goals:</label>
+		<input
+			type="text"
+			id="goals"
+			placeholder="A computer science undergrad looking to learn about tech and CS. Show anything that is tech especially AI related and never approve content that is not related to those topics."
+		/>
+
+		<div class="slider-container">
+			<label for="cutoff"
+				>Probability Cutoff (<span id="cutoff-value">70</span>%):</label
+			>
+			<input type="range" id="cutoff" min="0" max="100" step="1" value="70" />
+		</div>
+
+		<button id="save-btn">Save</button>
+
+		<script src="dist/popup.bundle.js"></script>
+	</body>
+</html>

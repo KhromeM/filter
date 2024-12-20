@@ -1,0 +1,32 @@
+const path = require("path");
+
+module.exports = {
+  mode: "development",
+  devtool: "cheap-source-map",
+  entry: {
+    contentScript: "./src/contentScript.js",
+    background: "./src/background.js",
+    popup: "./src/popup.js"
+  },
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+    ],
+  },
+  optimization: {
+    minimize: false,
+  },
+};
