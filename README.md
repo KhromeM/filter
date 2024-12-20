@@ -1,7 +1,8 @@
 `npm run build`
-install extension
-add open router key
+
+1) install extension
+2) add open router key
 
 ## issues to fix
 
-youtube resu
+sometimes the videos get stuck on "scanning..."
